@@ -1,0 +1,65 @@
+-- create table Team(TID varchar(30) primary key, TNAME varchar(50) not null, Points int);
+-- insert into Team values('CSK', 'Chennai Super Kings', 6);
+-- insert into Team values('DC', 'Delhi Capitals',2);
+-- insert into Team values('KKR', 'Kolkata Knight Riders', 4);
+-- insert into Team values('MI', 'Mumbai Indians',8);
+-- insert into Team values('RCB', 'Royal Challengers Bangalore',2);
+
+-- create table Player(PID int primary key, Name varchar (255), Team varchar2 (10) references Team (TID), Role varchar2(15));
+-- insert into Player values(1031, 'Ruturaj Gaikwad', 'CSK','BAT');
+-- insert into Player values(1007, 'MS Dhoni', 'CSK','BAT');
+-- insert into Player values(1008, 'Ravindra Jadeja', 'CSK','BOWL');
+-- insert into Player values(1017, 'Rishabh Pant', 'DC','BAT');
+-- insert into Player values(1030, 'David Warner', 'DC','BAT');
+-- insert into Player values(1002, 'Anrich Nortje', 'DC','BOWL');
+-- insert into Player values(1041, 'Shreyas Iyer', 'KKR','BAT');
+-- insert into Player values(1027, 'Nitish Rana', 'KKR','BAT');
+-- insert into Player values(1074, 'Sunil Narine', 'KKR','BOWL');
+-- insert into Player values(1045, 'Rohit Sharma', 'MI','BAT');
+-- insert into Player values(1063, 'Surya Kumar Yadav', 'MI','BAT');
+-- insert into Player values(1093, 'Jasprit Bumrah', 'MI','BOWL');
+-- insert into Player values(1018, 'Virat Kohli', 'RCB','BAT');
+-- insert into Player values(1032, 'Glenn Maxwell', 'RCB','BAT');
+-- insert into Player values(1073, 'Mohammed Siraj', 'RCB','BOWL');
+
+-- create table Player_Performance( primary key (teamID varchar(5)  , P_num int),  Runs int, Wickets int, catches int );
+-- RCB Players
+
+-- INSERT INTO Player_Performance VALUES ('RCB', 1018 , 205, 2, 4);
+-- INSERT INTO Player_Performance VALUES ('RCB', 1032,  100, 3, 0);
+-- INSERT INTO Player_Performance VALUES ('RCB', 1073,  40, 6, 1);
+
+-- -- MI Players
+-- INSERT INTO Player_Performance VALUES ('MI', 1045,  400, 0, 3);
+-- INSERT INTO Player_Performance VALUES ('MI', 1063, 110, 1, 1);
+-- INSERT INTO Player_Performance VALUES ('MI', 1093,  25, 7, 1);
+
+-- -- DC Players
+-- INSERT INTO Player_Performance VALUES ('DC', 1030,  145, 1, 2);
+-- INSERT INTO Player_Performance VALUES ('DC', 1017,  105, 2, 2);
+-- INSERT INTO Player_Performance VALUES ('DC', 1002,  35, 4, 1);
+
+-- -- KKR Players
+-- INSERT INTO Player_Performance VALUES ('KKR', 1041,  160, 0, 2);
+-- INSERT INTO Player_Performance VALUES ('KKR', 1074,  60, 3, 2);
+-- INSERT INTO Player_Performance VALUES ('KKR', 1027,  100, 0, 1);
+
+-- -- CSK Players
+-- INSERT INTO Player_Performance VALUES ('CSK', 1007,  120, 2, 2);
+-- INSERT INTO Player_Performance VALUES ('CSK', 1031,  110, 2, 1);
+-- INSERT INTO Player_Performance VALUES ('CSK', 1008,  75, 3, 1);
+
+
+-- TABLE DESCRIPTION
+-- create table Player_Performance( 
+-- 	teamID varchar(5),
+-- 	P_num int,  
+-- 	Runs int, 
+-- 	Wickets int, 
+-- 	catches int,
+-- 	CONSTRAINT PK PRIMARY KEY(P_num , teamID)
+-- );
+
+--select * from PLayer_Performance;
+--select * from Player;
+-- select * from Team;
