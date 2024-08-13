@@ -1,0 +1,65 @@
+--Table Updated at 16:42 hrs :)
+--drop table Team;
+--drop table Player;
+--drop table Match_Results;
+--drop table Performance_P;
+--drop table Rankings;
+
+create table Team(TID number primary key, TNAME varchar2(30) not null, Coach varchar2(30) not null, HG varchar2(100) not null, 
+CAPT varchar2(40), TWIN number, TLOSS number);
+
+insert into Team (TID, TNAME, Coach, HG, CAPT) values(101, 'KKR', 'Brendon McCullum', 'Eden Gardens', 'Shreyas Iyer');
+insert into Team (TID, TNAME, Coach, HG, CAPT) values(102, 'RCB', 'Mike Hesson', 'Chinnaswamy', 'Virat Kohli');
+insert into Team (TID, TNAME, Coach, HG, CAPT) values(103, 'CSK', 'Stephen Fleming', 'Chepauk', 'MS Dhoni');
+insert into Team (TID, TNAME, Coach, HG, CAPT) values(104, 'MI', 'Mahela Jayawardane', 'Wankhede', 'Rohit Sharma');
+insert into Team (TID, TNAME, Coach, HG, CAPT) values(105, 'DC', 'Ricky Ponting', 'Arun Jaitley Stadium', 'David Warner');
+
+create table Player(PID int primary key, Name varchar (255), Age int, Team varchar(50), Nationality varchar(50), 
+Batting_Avg decimal(5,2),Bowling_Avg decimal(5,2) , Matches_Played int);
+
+--MI
+insert into Player values(1045, 'Rohit Sharma', 36, 'MI', 'Indian', 29.58, 30.2, 243); 
+insert into Player values(1093, 'Jasprit Bumrah', 29, 'MI', 'Indian', 8.0, 23.31, 120); 
+insert into Player values(1031, 'Ishan Kishan', 25, 'MI', 'Indian', 29.42, 0.0, 91); 
+insert into Player values(1063, 'S K Yadav', 33, 'MI', 'Indian', 31.85, 0.0, 139); 
+insert into Player values(1055, 'Kieron Pollard', 36, 'MI', 'Windian', 28.67, 31.59, 189); 
+
+--RCB
+insert into Player values(1018, 'Virat Kohli', 34, 'RCB', 'Indian', 37.25, 92.0, 237); 
+insert into Player values(1017, 'AB de Villiers', 39, 'RCB', 'South African', 39.71, 0.0, 184); 
+insert into Player values(1032, 'Glenn Maxwell', 34, 'RCB', 'Australian', 26.4, 37.87, 124); 
+insert into Player values(1073, 'Mohd. Siraj', 29, 'RCB', 'Indian', 12.12, 29.82, 79); 
+insert into Player values(1003, 'Yuzvendra Chahal', 33, 'RCB', 'Indian', 5.29, 21.69, 145);
+
+--KKR
+insert into Player values(1096, 'Shreyas Iyer', 28, 'KKR', 'Indian', 31.55, 0.0, 101); 
+insert into Player values(1074, 'Sunil Narine', 35, 'KKR', 'Windian', 13.76, 25.79, 162); 
+insert into Player values(1012, 'Andre Russell', 35, 'KKR', 'Windian', 29.0, 24.49, 112); 
+insert into Player values(1027, 'Nitish Rana', 29, 'KKR', 'Indian', 28.51, 25.2, 105); 
+insert into Player values(1035, 'Rinku Singh', 25, 'KKR', 'Indian', 36.25, 0, 31);
+
+--DC
+insert into Player values(1033, 'David Warner', 36, 'DC', 'Australian', 41.54, 0, 176); 
+insert into Player values(1077, 'Rishabh Pant', 26, 'DC', 'Indian', 34.61, 0, 98); 
+insert into Player values(1002, 'Anrich Nortje', 29, 'DC', 'South African', 11.25, 24.15, 40); 
+insert into Player values(1020, 'Axar Patel', 29, 'DC', 'Indian', 20.55, 30.54, 136); 
+insert into Player values(1097, 'Ishant Sharma', 35, 'DC', 'Indian', 9.33, 35.45, 101);
+
+--CSK
+insert into Player values(1007, 'MS Dhoni', 42, 'CSK', 'Indian', 38.79, 0.0, 250); 
+insert into Player values(1008, 'Ravindra Jadeja', 34, 'CSK', 'Indian', 26.39, 29.57, 226); 
+insert into Player values(1030, 'Ruturaj Gaikwad', 26, 'CSK', 'Indian', 39.07, 0.0, 52); 
+insert into Player values(1054, 'Ben Stokes', 32, 'CSK', 'English', 24.61, 35.43, 45); 
+insert into Player values(1081, 'Matheesha Pathirana',20 , 'CSK', 'Sri Lankan', 0.0, 20.14, 14);
+
+create table Match_Results(MDATE DATE, MID number primary key, Team_A number references Team(TID), Team_B number references Team(TID), 
+Winner number references Team(TID), Loser number references Team(TID), Venue varchar(55), POTM number references Player(PID));
+
+create table Performance_P(PerfID number primary key, PID number references Player(PID), MID number references Match_Results(MID), Runs number, Wickets number, 
+Overs decimal(4,2), catches number, SR decimal(5,2), ER decimal(5,2));
+
+create table Rankings(RID number primary key, PID number references Player(PID), Rank number, Points number, LastUpdatedDate date); 
+
+
+
+
